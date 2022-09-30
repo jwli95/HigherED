@@ -19,6 +19,8 @@ def run(playwright: Playwright,pagenum:int,cur_page:int) -> None:
     for i in range(count):
         left = results.locator(".col-sm-7").nth(i).inner_text()
         left_all_info=left.split("\n")
+        link = results.locator(".col-sm-7 a").nth(i).get_attribute('href')
+        full_link="https://www.higheredjobs.com/faculty/"+link
         right=results.locator(".col-sm-5").nth(i).inner_text()
         right_all_info=right.split("\n")
 
@@ -29,9 +31,9 @@ def run(playwright: Playwright,pagenum:int,cur_page:int) -> None:
         print(link)
 
         if len(right_all_info) == 2:
-            single_record={"position":left_all_info[0],"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1]}
+            single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1]}
         else:
-            single_record={"position":left_all_info[0],"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":""}
+            single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":""}
         all_records.append(single_record)
 
         break
