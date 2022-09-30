@@ -1,5 +1,8 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
 import math
+import json
+from playwright.sync_api import Playwright, sync_playwright, expect
+
+
 
 all_records=[]
 
@@ -24,19 +27,14 @@ def run(playwright: Playwright,pagenum:int,cur_page:int) -> None:
         right=results.locator(".col-sm-5").nth(i).inner_text()
         right_all_info=right.split("\n")
 
-        print(left_all_info)
+        single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1].split(' ')[1]}
 
-        # test link
-        link = results.locator(".col-sm-7").nth(i).inner_html()
-        print(link)
+        # if len(right_all_info) == 2:
+        #     single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1]}
+        # else:
+        #     single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":""}
 
-        if len(right_all_info) == 2:
-            single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1]}
-        else:
-            single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":""}
         all_records.append(single_record)
-
-        break
     
     # ---------------------
     context.close()
@@ -66,8 +64,12 @@ with sync_playwright() as playwright:
         run(playwright,num_single_page,cur_page)
 
         break
-    print(all_records)
-    print(len(all_records))
+    # print(all_records)
+    # print(len(all_records))
+
+    with open('data.json', 'w') as f:
+        json.dump(all_records, f)
+
     
     context.close()
     browser.close()
