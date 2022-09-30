@@ -34,11 +34,21 @@ def run(playwright: Playwright,pagenum:int,cur_page:int) -> None:
 
 
 with sync_playwright() as playwright:
-    # 写死了这里 总条数
-    total_records=1558
-    # 每页条数/为了分页
-    num_single_page=100
+    # Find number of ADs
+    url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=102&CatName=Computer%20Science'
+    browser = playwright.firefox.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto(url)
+    n_ad = page.locator(".text-nowrap").nth(0).inner_text().split(' ')
+    n_ad = int(''.join(n_ad[5].split(',')))
+    print(n_ad)
+
+    # Parameters
+    total_records = n_ad
+    num_single_page = 100
     
+
     total_page=math.ceil(total_records/num_single_page)
     print(total_page)
     for cur_page in range(total_page):
@@ -46,3 +56,6 @@ with sync_playwright() as playwright:
         run(playwright,num_single_page,cur_page)
     print(all_records)
     print(len(all_records))
+    
+    context.close()
+    browser.close()
