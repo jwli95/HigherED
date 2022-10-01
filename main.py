@@ -75,7 +75,6 @@ with sync_playwright() as playwright:
     for cur_page in range(total_page):
         print('Current Page:', cur_page)
         run(playwright, jobcat, num_single_page, cur_page)
-        break
 
     print('Obtained Records:', len(all_records))
 
