@@ -1,4 +1,4 @@
-professor
-prof
-tenure
-track
+| Syntax | Description |
+| --- | ----------- |
+| Header | Title |
+| Paragraph | Text |
