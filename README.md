@@ -1,5 +1,5 @@
-| jobcode | university | location | position | post_date | link |
-| ------- | ---------- | -------- | -------- | --------- | ---- |
+| No. | jobcode | university | location | position | post_date | link |
+| --- | ------- | ---------- | -------- | -------- | --------- | ---- |
 |1|178101683|Boise State University|Boise, ID|Multiple Positions: Assistant or Associate Professor of Electrical and Computer Engineering|09/15/22|[link](https://www.higheredjobs.com/faculty/details.cfm?JobCode=178101683&Title=Multiple%20Positions%3A%20Assistant%20or%20Associate%20Professor%20of%20Electrical%20and%20Computer%20Engineering)|
 |2|178124975|University of Wisconsin - Madison|Madison, WI|Assistant Professor|10/01/22|[link](https://www.higheredjobs.com/faculty/details.cfm?JobCode=178124975&Title=Assistant%20Professor)|
 |3|178124853|George Washington University|Washington, DC|Senior Research Scientist|10/01/22|[link](https://www.higheredjobs.com/faculty/details.cfm?JobCode=178124853&Title=Senior%20Research%20Scientist)|
