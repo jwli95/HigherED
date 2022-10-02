@@ -26,8 +26,6 @@ def run(playwright: Playwright, jobcat: int, pagenum: int, cur_page: int) -> Non
         right = results.locator(".col-sm-5").nth(i).inner_text()
         right_all_info = right.split("\n")
 
-        # single_record = {"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1].split(' ')[1]}
-
         if len(right_all_info) >= 2:
             single_record={"position":left_all_info[0],"link":full_link,"university":left_all_info[1],"location":left_all_info[2],"major":right_all_info[0],"post_date":right_all_info[1].split(' ')[1]}
         else:
