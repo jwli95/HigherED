@@ -39,17 +39,10 @@ def run(playwright: Playwright, jobcat: int, pagenum: int, cur_page: int) -> Non
 
 with sync_playwright() as playwright:
     # Find number of ADs
-    filename = 'EE.json'
+    filename = 'CEE.json'
 
-    if filename == 'CS.json':
-        url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=102&CatName=Computer%20Science'
-        jobcat = 102
-    elif filename == 'CE.json':
-        url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=116&CatName=Computer%20Engineering'
-        jobcat = 116
-    elif filename == 'EE.json':
-        url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=117&CatName=Electrical%20Engineering'
-        jobcat = 117
+    url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=115&CatName=Civil%20and%20Environmental%20Engineering'
+    jobcat = 115
 
     browser = playwright.firefox.launch(headless=False)
     context = browser.new_context()
