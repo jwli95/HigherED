@@ -39,7 +39,7 @@ def run(playwright: Playwright, jobcat: int, pagenum: int, cur_page: int) -> Non
 
 with sync_playwright() as playwright:
     # Find number of ADs
-    filename = 'EE.json'
+    filename = 'CE.json'
 
     if filename == 'CS.json':
         url = 'https://www.higheredjobs.com/faculty/search.cfm?JobCat=102&CatName=Computer%20Science'
